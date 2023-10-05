@@ -1,9 +1,5 @@
 import json
-
 import requests
-import pandas as pd
-import re
-import commons
 
 
 def get_payout(symbol):
@@ -35,3 +31,9 @@ def get_payout(symbol):
         }
         p_item_list.append(p_item)
     return p_item_list
+
+
+if __name__ == "__main__":
+    item = get_payout("601169")
+    print(item)
+    pass
