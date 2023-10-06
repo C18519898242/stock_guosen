@@ -21,10 +21,9 @@ def get_overview_data(symbol):
     result = json.loads(text)
 
     # pb, pe
-
-    if len(result["ResultSets"]) > 6:
-        result_sets = result["ResultSets"][6]
-        result_items = result_sets["Content"]
+    result_sets = result["ResultSets"][6]
+    result_items = result_sets["Content"]
+    if len(result_items) != 0:
         last_item = result_items[0]
         pe = last_item[0]
         pb = last_item[2]
@@ -48,6 +47,6 @@ def get_overview_data(symbol):
 
 
 if __name__ == "__main__":
-    item = get_overview_data("601169")
+    item = get_overview_data("000991")
     print(item)
     pass
