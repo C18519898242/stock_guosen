@@ -23,12 +23,18 @@ def get_overview_data(symbol):
     # roe
     result_sets = result["ResultSets"][0]
     result_items = result_sets["Content"]
+
+    if len(result_items) == 0:
+        return None
     last_item = result_items[0]
     roe = last_item[1]
 
     # 行业
     result_sets = result["ResultSets"][1]
     result_items = result_sets["Content"]
+
+    if len(result_items) == 0:
+        return None
     last_item = result_items[0]
     industry1 = last_item[1]
     industry2 = last_item[2]
@@ -36,8 +42,10 @@ def get_overview_data(symbol):
     # revenue (营收), revenue_growth (营收同比), profit_growth (归母净利润同比), gross_profit (毛利率), eps (每股收益)
     result_sets = result["ResultSets"][4]
     result_items = result_sets["Content"]
-    last_item = result_items[0]
 
+    if len(result_items) == 0:
+        return None
+    last_item = result_items[0]
     eps = last_item[0]
     revenue = last_item[2]
     gross_profit = last_item[4]
@@ -47,6 +55,7 @@ def get_overview_data(symbol):
     # pb, pe
     result_sets = result["ResultSets"][6]
     result_items = result_sets["Content"]
+
     if len(result_items) == 0:
         return None
     last_item = result_items[0]
