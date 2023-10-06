@@ -19,34 +19,40 @@ def get_overview_data(symbol):
     response = requests.request("POST", url, headers=headers, data=payload)
     text = response.text
     result = json.loads(text)
+    # roe
+    result_sets = result["ResultSets"][0]
+    result_items = result_sets["Content"]
+    last_item = result_items[0]
+    roe = last_item[1]
 
     # pb, pe
     result_sets = result["ResultSets"][6]
     result_items = result_sets["Content"]
-    if len(result_items) != 0:
-        last_item = result_items[0]
-        pe = last_item[0]
-        pb = last_item[2]
-
-        # 行业
-        result_sets = result["ResultSets"][1]
-        result_items = result_sets["Content"]
-        last_item = result_items[0]
-        industry1 = last_item[1]
-        industry2 = last_item[2]
-
-        p_item = {
-            "pe": pe,
-            "pb": pb,
-            "industry1": industry1,
-            "industry2": industry2
-        }
-        return p_item
-    else:
+    if len(result_items) == 0:
         return None
+    last_item = result_items[0]
+    pe = last_item[0]
+    pb = last_item[2]
+
+    # 行业
+    result_sets = result["ResultSets"][1]
+    result_items = result_sets["Content"]
+    last_item = result_items[0]
+    industry1 = last_item[1]
+    industry2 = last_item[2]
+
+    p_item = {
+        "roe": roe,
+        "pe": pe,
+        "pb": pb,
+        "industry1": industry1,
+        "industry2": industry2
+    }
+    return p_item
 
 
 if __name__ == "__main__":
-    item = get_overview_data("000991")
+    # item = get_overview_data("000991")
+    item = get_overview_data("300073")
     print(item)
     pass
