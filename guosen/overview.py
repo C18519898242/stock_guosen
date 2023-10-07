@@ -49,6 +49,7 @@ def get_overview_data(symbol):
     eps = last_item[0]
     revenue = last_item[2]
     gross_profit = last_item[4]
+    de_ratio = last_item[5]
     revenue_growth = last_item[7]
     profit_growth = last_item[8]
 
@@ -69,6 +70,7 @@ def get_overview_data(symbol):
         "pb": pb,
         "revenue": revenue,
         "gross_profit": gross_profit,
+        "de_ratio": de_ratio,
         "revenue_growth": revenue_growth,
         "profit_growth": profit_growth,
         "industry1": industry1,
